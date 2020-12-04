@@ -13,8 +13,9 @@ import { AccountService } from '../services/account.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  constructor(public accountService: AccountService, private router: Router,
-              private toastr: ToastrService) { }
+  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {
+    accountService.currentUser$.subscribe((user) => console.log(user));
+  }
 
   ngOnInit(): void {
     // this.getCurrentUser();
