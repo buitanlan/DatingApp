@@ -9,20 +9,19 @@ import { Member } from '../models/member';
 export class MemberService {
   baseUrl = environment.apiUrl;
 
-  readonly token = JSON.parse(localStorage.getItem('user'))?.token;
-  readonly httpOptions = {
-    headers: new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-    })
-  };
+  // readonly token = JSON.parse(localStorage.getItem('user'))?.token;
+  // readonly httpOptions = {
+  //   headers: new HttpHeaders({
+  //     Authorization: `Bearer ${this.token}`,
+  //   })
+  // };
 
   constructor(private http: HttpClient) { }
   getMembers() {
-    console.log(this.httpOptions);
-    return this.http.get<Member[]>(this.baseUrl + 'users', this.httpOptions);
+    return this.http.get<Member[]>(this.baseUrl + 'users');
   }
 
   getMember(username: string) {
-    return this.http.get<Member>(this.baseUrl + 'users/' + username, this.httpOptions);
+    return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 }
