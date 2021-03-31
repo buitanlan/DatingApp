@@ -18,7 +18,10 @@ export class AppComponent implements OnInit {
   }
 
   setCurrentUser(): void {
-    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    // tslint:disable-next-line:no-non-null-assertion
+    const user: User = JSON.parse(localStorage.getItem('user')!);
+
     this.accountService.setCurrentUser(user);
   }
 }

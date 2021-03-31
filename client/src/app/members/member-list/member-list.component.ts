@@ -8,7 +8,7 @@ import { MemberService } from 'src/app/services/member.service';
   styleUrls: ['./member-list.component.css']
 })
 export class MemberListComponent implements OnInit {
-  members: Member[];
+  members: Member[] = {} as Member[];
 
   constructor(private memberService: MemberService) { }
 
