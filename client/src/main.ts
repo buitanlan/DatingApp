@@ -1,12 +1,33 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { AppModule } from './app/app.module';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { environment } from './environments/environment';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.route';
+import { ToastrModule } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
+import { jwtInterceptor } from './app/interceptors/jwt.interceptor';
+import { errorInterceptor } from './app/interceptors/error.interceptor';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom([
+      RouterModule.forRoot(routes),
+      ToastrModule.forRoot({
+        positionClass: "toast-bottom-right",
+        preventDuplicates: true,
+      }),
+      TabsModule.forRoot(),
+      BsDropdownModule.forRoot()
+    ]),
+    provideHttpClient(
+      withInterceptors([jwtInterceptor, errorInterceptor])
+    ),
+  ],
+}).catch(console.error);

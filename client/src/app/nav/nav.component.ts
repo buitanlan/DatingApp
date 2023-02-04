@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { User } from '../models/user';
 import { AccountService } from '../services/account.service';
+import { AsyncPipe, NgIf, TitleCasePipe } from '@angular/common';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    RouterLinkActive,
+    RouterLink,
+    NgIf,
+    BsDropdownModule,
+    TitleCasePipe,
+    FormsModule
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent implements OnInit {
   model: any = {};
