@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Member } from 'src/app/models/member';
-import { MemberService } from 'src/app/services/member.service';
+import { Member } from 'src/app/shared/models/member';
+import { MemberService } from 'src/app/shared/services/member.service';
 import { MemberCardComponent } from '../member-card/member-card.component';
 import { NgForOf } from '@angular/common';
 

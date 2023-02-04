@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
-  templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css'],
+  template: `
+  `,
+  styleUrls: ['./messages.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

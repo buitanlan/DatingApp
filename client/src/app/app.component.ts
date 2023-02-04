@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { User } from './models/user';
-import { AccountService } from './services/account.service';
+import { User } from './shared/models/user';
+import { AccountService } from './shared/services/account.service';
 import { NavComponent } from './nav/nav.component';
 import { RouterOutlet } from '@angular/router';
 

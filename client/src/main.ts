@@ -6,8 +6,8 @@ import { AppComponent } from './app/app.component';
 import { routes } from './app/app.route';
 import { ToastrModule } from 'ngx-toastr';
 import { RouterModule } from '@angular/router';
-import { jwtInterceptor } from './app/interceptors/jwt.interceptor';
-import { errorInterceptor } from './app/interceptors/error.interceptor';
+import { jwtInterceptor } from './app/shared/interceptors/jwt.interceptor';
+import { errorInterceptor } from './app/shared/interceptors/error.interceptor';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 

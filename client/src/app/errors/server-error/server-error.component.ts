@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-server-error',
-  templateUrl: './server-error.component.html',
-  styleUrls: ['./server-error.component.css'],
+  template: ``,
+  styleUrls: ['./server-error.component.scss'],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -1,15 +1,72 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryModule, NgxGalleryOptions } from '@kolkov/ngx-gallery';
-import { Member } from 'src/app/models/member';
-import { MemberService } from 'src/app/services/member.service';
+import { Member } from 'src/app/shared/models/member';
+import { MemberService } from 'src/app/shared/services/member.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-member-detail',
-  templateUrl: './member-detail.component.html',
-  styleUrls: ['./member-detail.component.css'],
+  template: `
+    <div class="row" *ngIf="member">
+      <div class="col-4">
+        <div class="card">
+          <img src="{{ member.photoUrl || './asset/user.png' }}" alt="{{ member.knownAs }}"
+               class="card-img-top img-thumbnail" />
+          <div class="card-body">
+            <div>
+              <strong>Location:</strong>
+              <p>{{ member.city }}, {{ member.country }}</p>
+            </div>
+            <div>
+              <strong>Age:</strong>
+              <p>{{ member.age }}</p>
+            </div>
+            <div>
+              <strong>Member since:</strong>
+              <p>{{ member.created }}</p>
+            </div>
+            <div>
+              <strong>Last Active:</strong>
+              <p>{{ member.lastActive }}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group d-flex">
+              <button class="btn btn-primary">Like</button>
+              <button class="btn btn-success">Message</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <tabset class="member-tabset">
+          <tab heading='About {{member.knownAs}}'>
+            <h4>Description</h4>
+            <p>{{member.introduction}}</p>
+            <h4>Looking for</h4>
+            <p>{{member.lookingFor}}</p>
+          </tab>
+          <tab heading='Interests'>
+            <h4>Description</h4>
+            <p>{{member.interests}}</p>
+
+          </tab>
+          <tab heading='Photos'>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"
+                         style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
+
+          </tab>
+          <tab heading='Messages'>
+            <h4>Messages will go here</h4>
+
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  `,
+  styleUrls: ['./member-detail.component.scss'],
   standalone: true,
   imports: [
     NgxGalleryModule,
