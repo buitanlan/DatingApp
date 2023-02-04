@@ -1,10 +1,7 @@
-using System;
 using API.Data;
 using API.Extensions;
 using API.Middlewares;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 
@@ -23,10 +20,11 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .ReadFrom.Configuration(ctx.Configuration));
 
 var app = builder.Build();
-using var scope = app.Services.CreateScope();
-var  services = scope.ServiceProvider;
 try
 {
+    
+    using var scope = app.Services.CreateScope();
+    var  services = scope.ServiceProvider;
     var context = services.GetRequiredService<DataContext>();
     await context.Database.MigrateAsync();
     await Seed.SeedUsersAsync(context);
