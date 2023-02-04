@@ -1,9 +1,5 @@
-using System;
 using System.Net;
-using System.Threading.Tasks;
 using API.Errors;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using Serilog;
 
