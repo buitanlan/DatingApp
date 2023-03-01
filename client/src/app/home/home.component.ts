@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RegisterComponent } from '../register/register.component';
 import { NgIf } from '@angular/common';
 
@@ -27,7 +27,6 @@ import { NgIf } from '@angular/common';
       </div>
     </div>
   `,
-  styleUrls: ['./home.component.scss'],
   standalone: true,
   imports: [
     RegisterComponent,
@@ -35,17 +34,14 @@ import { NgIf } from '@angular/common';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   registerMode = false;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   registerToggle() {
     this.registerMode = !this.registerMode;
   }
+
   cancelRegisterMode(event: boolean) {
     this.registerMode = event;
   }

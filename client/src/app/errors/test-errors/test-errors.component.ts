@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { NgForOf, NgIf } from '@angular/common';
 
@@ -23,7 +23,6 @@ import { NgForOf, NgIf } from '@angular/common';
     </div>
 
   `,
-  styleUrls: ['./test-errors.component.scss'],
   standalone: true,
   imports: [
     NgIf,
@@ -31,12 +30,11 @@ import { NgForOf, NgIf } from '@angular/common';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestErrorsComponent implements OnInit {
+export class TestErrorsComponent {
   baseUrl = environment.apiUrl;
   validationErrors: string[] = [];
-  constructor(private http: HttpClient) {}
+  readonly http = inject(HttpClient);
 
-  ngOnInit(): void {}
   get404Error() {
     this.http.get(this.baseUrl + 'buggy/not-found').subscribe(
       (response) => {
@@ -54,6 +52,7 @@ export class TestErrorsComponent implements OnInit {
       (err) => console.log(err)
     );
   }
+
   get500Error() {
     this.http.get(this.baseUrl + 'buggy/server-error').subscribe(
       (response) => {

@@ -13,7 +13,6 @@ import { RouterOutlet } from '@angular/router';
     </div>
 
   `,
-  styleUrls: ['./app.component.css'],
   imports: [
     NavComponent,
     RouterOutlet
@@ -25,8 +24,9 @@ export class AppComponent implements OnInit {
   title = 'The Dating app';
   users: any;
 
-  constructor( private accountService: AccountService) {
+  constructor(private accountService: AccountService) {
   }
+
   ngOnInit(): void {
     this.setCurrentUser();
   }

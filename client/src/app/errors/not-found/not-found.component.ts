@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -12,18 +12,12 @@ import { RouterLink } from '@angular/router';
     </div>
 
   `,
-  styleUrls: ['./not-found.component.scss'],
   standalone: true,
   imports: [
     RouterLink
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotFoundComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class NotFoundComponent {
 
 }

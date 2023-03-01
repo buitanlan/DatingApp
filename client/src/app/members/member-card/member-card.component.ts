@@ -9,14 +9,17 @@ import { RouterLink } from '@angular/router';
       <div class="card-img-wrapper">
         <img src="{{member.photoUrl}}" alt="{{member.knownAs}}" class="card-img-top">
         <ul class="list-inline member-icons animate text-center">
-          <li class="list-inline-item"><button routerLink='/members/{{member.username}}' class="btn btn-primary">
-            <i class="fas fa-user"></i></button>
+          <li class="list-inline-item">
+            <button routerLink='/members/{{member.username}}' class="btn btn-primary">
+              <i class="fas fa-user"></i></button>
           </li>
-          <li class="list-inline-item"><button class="btn btn-primary">
-            <i class="fas fa-heart"></i></button>
+          <li class="list-inline-item">
+            <button class="btn btn-primary">
+              <i class="fas fa-heart"></i></button>
           </li>
-          <li class="list-inline-item"><button class="btn btn-primary">
-            <i class="fas fa-envelope"></i></button>
+          <li class="list-inline-item">
+            <button class="btn btn-primary">
+              <i class="fas fa-envelope"></i></button>
           </li>
         </ul>
       </div>
@@ -36,9 +39,10 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink]
 })
 export class MemberCardComponent implements OnInit {
-  @Input() member: Member  = {} as Member;
+  @Input() member: Member = {} as Member;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

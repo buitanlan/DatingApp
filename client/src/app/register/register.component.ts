@@ -24,7 +24,6 @@ import { FormsModule } from '@angular/forms';
 
     </form>
   `,
-  styleUrls: ['./register.component.scss'],
   standalone: true,
   imports: [
     FormsModule
@@ -35,18 +34,19 @@ export class RegisterComponent implements OnInit {
   @Input() usersFormHomeComponent: any;
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
-  constructor(private accountService: AccountService, private toastr: ToastrService) {}
 
-  ngOnInit(): void {}
+  constructor(private accountService: AccountService, private toastr: ToastrService) {
+  }
+
+  ngOnInit(): void {
+  }
 
   register() {
     this.accountService.register(this.model).subscribe(
-      (res) => {
-        console.log(res);
+      () => {
         this.cancel();
       },
       err => {
-        console.log(err);
         this.toastr.error(err.error);
       }
     );
