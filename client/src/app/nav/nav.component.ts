@@ -42,9 +42,9 @@ import { FormsModule } from '@angular/forms';
         <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm"
               class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" autocomplete="off">
           <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
-                 placeholder="Username" />
+                 placeholder="Username"/>
           <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password"
-                 placeholder="Password" />
+                 placeholder="Password"/>
           <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
       </div>
@@ -65,6 +65,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class NavComponent implements OnInit {
   model: any = {};
+
   constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) {
     accountService.currentUser$.subscribe((user) => console.log(user));
   }
@@ -72,21 +73,22 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     // this.getCurrentUser();
   }
+
   login(): void {
-    this.accountService.login(this.model).subscribe(res => {
-      this.router.navigateByUrl('/members');
+    this.accountService.login(this.model).subscribe(() => {
+      void this.router.navigateByUrl('/members');
     }, err => {
-        console.log(err);
+      console.log(err);
     });
   }
 
   logout(): void {
     this.accountService.logout();
-    this.router.navigateByUrl('/');
+    void this.router.navigateByUrl('/');
   }
+
   getCurrentUser() {
     this.accountService.currentUser$.subscribe((user) => {
-      // this.loggedIn = !!user;
     }, err => console.log(err));
   }
 }

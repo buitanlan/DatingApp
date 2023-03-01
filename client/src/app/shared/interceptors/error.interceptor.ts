@@ -20,10 +20,9 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
                 }
               }
               throw modalStateErrors.flat();
-            } else if (typeof(error.error) === 'object'){
+            } else if (typeof (error.error) === 'object') {
               toastr.error(error.statusTest, error.error);
-            }
-            else {
+            } else {
               toastr.error(error.statusText, error.status);
             }
             break;
